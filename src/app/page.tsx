@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getNews } from "@/lib/microcms";
 import FadeIn from "@/components/FadeIn";
 import ServiceIcon from "@/components/ServiceIcon";
-import HeroIllustration from "@/components/HeroIllustration";
+import HeroVideo from "@/components/HeroVideo";
 
 const SERVICES = [
   {
@@ -37,55 +37,52 @@ export default async function Home() {
 
   return (
     <>
-      {/* ====== ヒーロー ====== */}
-      <section className="relative overflow-hidden">
-        {/* 背景のグラデーション装飾 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-bg via-white to-accent-bg/30" />
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-accent/[0.06]" />
-        <div className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full bg-brand/[0.04]" />
+      {/* ====== 固定動画背景（最下層） ====== */}
+      <div className="fixed inset-0 z-0">
+        <HeroVideo />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-black/20 to-white/50" />
+      </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl px-4 lg:px-8 py-16 sm:py-20">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            {/* テキスト側 */}
-            <div className="flex-1 text-center lg:text-left">
-              <p className="text-brand text-sm font-bold mb-4">
-                足立区 区内中小企業人材確保支援事業
-              </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text leading-tight">
-                人手不足に悩む企業の
-                <br />
-                <span className="text-brand">活気あふれる職場づくり</span>
-                を応援
-              </h1>
-              <p className="mt-6 text-text-muted leading-relaxed max-w-lg mx-auto lg:mx-0">
-                経験豊富なコンサルタントが、人材確保に関する課題を解決します。
-                コンサルティング支援、企業見学会、セミナー開催など、
-                多角的にサポートいたします。
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded transition-colors"
-                >
-                  お問い合わせ・お申し込み
-                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                </Link>
-                <Link
-                  href="/advisory"
-                  className="inline-flex items-center justify-center border-2 border-brand text-brand hover:bg-brand hover:text-white font-bold py-3.5 px-8 rounded transition-colors"
-                >
-                  事業内容紹介
-                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                </Link>
-              </div>
-            </div>
-            {/* イラスト側 */}
-            <div className="flex-1 max-w-xs sm:max-w-sm lg:max-w-lg">
-              <HeroIllustration className="w-full h-auto" />
-            </div>
+      {/* ====== ヒーロー（動画上のテキスト） ====== */}
+      <section className="relative z-10 min-h-screen flex items-center">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8 py-20 sm:py-28 text-center">
+          <p className="text-white/90 text-sm font-bold mb-4 tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+            足立区 区内中小企業人材確保支援事業
+          </p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
+            人手不足に悩む企業の
+            <br />
+            <span className="text-[#6db3f2]">活気あふれる職場づくり</span>
+            を応援
+          </h1>
+          <p className="mt-6 text-white/90 leading-relaxed max-w-lg mx-auto text-base drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
+            経験豊富なコンサルタントが、人材確保に関する課題を解決します。
+            コンサルティング支援、企業見学会、セミナー開催など、
+            多角的にサポートいたします。
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded shadow-md transition-colors"
+            >
+              お問い合わせ・お申し込み
+              <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
+            <Link
+              href="/advisory"
+              className="inline-flex items-center justify-center border-2 border-white/80 text-white hover:bg-white hover:text-text font-bold py-3.5 px-8 rounded shadow-md transition-colors backdrop-blur-sm"
+            >
+              事業内容紹介
+              <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
           </div>
         </div>
       </section>
+
+      {/* ====== メインコンテンツ（動画の上に覆いかぶさるように） ====== */}
+      <div className="relative z-20">
+        <div className="relative -mt-8">
+          <div className="absolute -top-8 left-0 right-0 h-8 bg-bg-light rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)]" />
 
       {/* ====== お知らせ ====== */}
       <section className="py-16 sm:py-20 bg-bg-light">
@@ -133,7 +130,7 @@ export default async function Home() {
       </section>
 
       {/* ====== 支援内容 ====== */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {SERVICES.map((service, i) => (
@@ -254,6 +251,8 @@ export default async function Home() {
           </FadeIn>
         </div>
       </section>
+        </div>
+      </div>
     </>
   );
 }

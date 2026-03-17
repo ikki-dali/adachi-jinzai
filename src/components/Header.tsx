@@ -52,7 +52,7 @@ export default function Header() {
           </Link>
 
           {/* デスクトップナビ */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
@@ -73,7 +73,7 @@ export default function Header() {
           {/* モバイルハンバーガー */}
           <button
             type="button"
-            className="lg:hidden p-3 -mr-1 text-text-light"
+            className="xl:hidden p-3 -mr-1 text-text-light"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="メニューを開く"
@@ -101,7 +101,7 @@ export default function Header() {
 
       {/* モバイルナビ */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+        className={`xl:hidden overflow-hidden transition-all duration-300 ${
           isOpen ? "max-h-[500px]" : "max-h-0"
         }`}
       >
