@@ -13,15 +13,16 @@ export default function ContactPage() {
     <>
       <PageHeader
         title="お問い合わせ"
+        titleEn="Contact"
         description="人材確保に関するご相談、セミナーへの参加など、お気軽にご連絡ください。費用は一切かかりません。"
         illustration={{ src: "/images/illust/worried-male.png", alt: "電話で相談するイラスト" }}
       />
 
-      <div className="py-16 sm:py-24">
+      <div className="py-20 sm:py-32">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
           <FadeIn>
-            <div className="bg-white border border-border rounded-lg p-6 sm:p-10">
-              <form className="space-y-6">
+            <div className="bg-white border border-border rounded-2xl p-8 sm:p-12">
+              <form className="space-y-8">
                 <div>
                   <label
                     htmlFor="company"
@@ -117,10 +118,10 @@ export default function ContactPage() {
                     className="w-full border border-border rounded px-4 py-3 text-base text-text focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors resize-y"
                   />
                 </div>
-                <div className="pt-2 text-center">
+                <div className="pt-4 text-center">
                   <button
                     type="submit"
-                    className="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white font-bold py-4 px-12 rounded transition-colors"
+                    className="w-full sm:w-auto bg-accent hover:bg-accent-light text-white font-bold py-4 px-12 rounded-full transition-colors"
                   >
                     送信する
                   </button>
@@ -130,7 +131,7 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={100}>
-            <div className="mt-10 bg-bg-section rounded-lg p-6 sm:p-8">
+            <div className="mt-12 bg-bg-section rounded-2xl p-8 sm:p-10">
               <h3 className="font-bold text-text mb-4">お電話でのお問い合わせ</h3>
               <div className="space-y-2 text-sm text-text-light">
                 <p>

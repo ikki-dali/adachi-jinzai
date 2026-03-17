@@ -37,27 +37,29 @@ export default function AdvisoryPage() {
     <>
       <PageHeader
         title="事業内容紹介"
+        titleEn="Advisory"
         description="経験豊富なコンサルタントが、貴社の人材確保に関する課題を解決します。"
         illustration={{ src: "/images/illust/advisor-talk.png", alt: "コンサルタントが相談に乗るイラスト" }}
       />
 
-      <div className="py-16 sm:py-24">
+      <div className="py-20 sm:py-32">
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
           {/* 支援の流れ */}
           <FadeIn>
-            <h2 className="text-xl font-bold text-brand text-center mb-10">
+            <p className="font-accent text-4xl text-brand/20 text-center leading-none">Flow</p>
+            <h2 className="mt-2 text-xl font-bold text-brand text-center mb-12">
               支援の流れ
             </h2>
-            <div className="max-w-2xl mx-auto mb-20">
+            <div className="max-w-2xl mx-auto mb-24">
               <div className="relative">
-                <div className="absolute left-[22px] top-6 bottom-6 w-0.5 bg-brand/20" />
-                <ol className="space-y-6">
+                <div className="absolute left-[23px] top-6 bottom-6 w-0.5 bg-accent/20" />
+                <ol className="space-y-8">
                   {FLOW_STEPS.map((item, i) => (
                     <li key={item.step} className="flex items-start gap-5">
-                      <span className="relative z-10 flex-shrink-0 w-11 h-11 rounded-full bg-brand text-white flex items-center justify-center text-sm font-bold">
-                        {i + 1}
+                      <span className="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-white border-2 border-accent flex items-center justify-center">
+                        <span className="font-accent text-2xl text-accent leading-none">{i + 1}</span>
                       </span>
-                      <div className="pt-2">
+                      <div className="pt-2.5">
                         <h3 className="font-bold text-text">{item.step}</h3>
                         <p className="text-sm text-text-muted mt-1">{item.detail}</p>
                       </div>
@@ -70,17 +72,18 @@ export default function AdvisoryPage() {
 
           {/* 支援内容 */}
           <FadeIn>
-            <h2 className="text-xl font-bold text-brand text-center mb-10">
+            <p className="font-accent text-4xl text-brand/20 text-center leading-none">Support</p>
+            <h2 className="mt-2 text-xl font-bold text-brand text-center mb-12">
               支援内容
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SUPPORT_ITEMS.map((item, i) => (
               <FadeIn key={item.id} delay={i * 40}>
-                <div className="bg-bg-light border border-border-light rounded-lg p-5 h-full">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand text-white text-xs font-bold">
+                <div className="bg-bg-light border border-border-light rounded-xl p-6 h-full">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent text-xs font-bold">
                       {item.id}
                     </span>
                     <h3 className="font-bold text-text text-sm">
@@ -97,13 +100,13 @@ export default function AdvisoryPage() {
 
           {/* CTA */}
           <FadeIn>
-            <div className="mt-16 text-center">
-              <p className="text-text-muted mb-4">
+            <div className="mt-20 text-center">
+              <p className="text-text-muted mb-6">
                 費用は一切かかりません。まずはお気軽にご相談ください。
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded transition-colors"
+                className="inline-flex items-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition-colors"
               >
                 相談の申し込みはこちら
                 <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>

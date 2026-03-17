@@ -31,17 +31,17 @@ export default function Header() {
             >
               <path
                 d="M4 16L16 4L28 16L16 28Z"
-                fill="#0d6efd"
+                fill="#2a7de1"
                 opacity="0.15"
               />
               <path
                 d="M8 16L16 8L24 16L16 24Z"
-                fill="#0d6efd"
+                fill="#2a7de1"
                 opacity="0.4"
               />
               <path
                 d="M12 16L16 12L20 16L16 20Z"
-                fill="#0d6efd"
+                fill="#2a7de1"
               />
             </svg>
             <span className="text-sm font-bold text-text leading-tight">
@@ -64,7 +64,7 @@ export default function Header() {
             ))}
             <Link
               href="/contact"
-              className="ml-2 inline-flex items-center bg-brand hover:bg-brand-dark text-white text-[13px] font-bold py-2 px-5 rounded transition-colors"
+              className="ml-2 inline-flex items-center bg-accent hover:bg-accent-light text-white text-[13px] font-bold py-2 px-5 rounded-full transition-colors"
             >
               お問い合わせ
             </Link>
@@ -119,7 +119,7 @@ export default function Header() {
             ))}
             <Link
               href="/contact"
-              className="block mt-3 mb-2 text-center bg-brand text-white text-sm font-bold py-3 rounded transition-colors"
+              className="block mt-3 mb-2 text-center bg-accent text-white text-sm font-bold py-3 rounded-full transition-colors"
               onClick={() => setIsOpen(false)}
             >
               お問い合わせ

@@ -17,6 +17,7 @@ export default async function GrantsPage() {
     <>
       <PageHeader
         title="関連リンク・補助金情報"
+        titleEn="Useful Links"
         description="人材確保・定着に活用できる各種補助金・支援制度をご案内します。"
         illustration={{ src: "/images/illust/fill-documents.png", alt: "書類を記入するイラスト" }}
       />
@@ -27,7 +28,7 @@ export default async function GrantsPage() {
             <div className="space-y-4">
               {grants.map((grant, i) => (
                 <FadeIn key={grant.id} delay={i * 80}>
-                  <div className="bg-white border border-border rounded-lg p-5 sm:p-6">
+                  <div className="bg-white border border-border rounded-2xl p-5 sm:p-6">
                     <h3 className="font-bold text-text">
                       {grant.name}
                     </h3>
@@ -72,13 +73,13 @@ export default async function GrantsPage() {
           )}
 
           <FadeIn>
-            <div className="mt-12 bg-bg-section rounded-lg p-6 sm:p-8 text-center">
+            <div className="mt-12 bg-bg-section rounded-2xl p-6 sm:p-8 text-center">
               <p className="text-text-muted text-sm mb-4">
                 補助金の活用についてご不明な点がございましたら、お気軽にご相談ください。
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded transition-colors"
+                className="inline-flex items-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full transition-colors"
               >
                 補助金について相談する
                 <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>

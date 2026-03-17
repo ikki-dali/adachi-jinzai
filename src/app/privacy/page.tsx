@@ -52,7 +52,7 @@ const SECTIONS = [
 export default function PrivacyPage() {
   return (
     <>
-      <PageHeader title="プライバシーポリシー" />
+      <PageHeader title="プライバシーポリシー" titleEn="Privacy Policy" />
 
       <div className="py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">

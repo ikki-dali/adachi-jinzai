@@ -53,6 +53,7 @@ export default function SubsidyPage() {
     <>
       <PageHeader
         title="助成金情報"
+        titleEn="Subsidy"
         description="人材確保に活用できる区・都・国の助成金をまとめてご紹介します。"
         illustration={{ src: "/images/illust/data-analysis.png", alt: "データ分析するイラスト" }}
       />
@@ -64,7 +65,7 @@ export default function SubsidyPage() {
               <FadeIn key={group.title} delay={gi * 100}>
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className={`inline-flex items-center justify-center w-10 h-10 ${group.color} text-white text-sm font-bold rounded`}>
+                    <span className={`inline-flex items-center justify-center w-10 h-10 ${group.color} text-white text-sm font-bold rounded-2xl`}>
                       {group.level}
                     </span>
                     <h2 className="text-xl font-bold text-text">
@@ -76,7 +77,7 @@ export default function SubsidyPage() {
                     {group.items.map((item) => (
                       <div
                         key={item.name}
-                        className="bg-white border border-border rounded-lg p-5 sm:p-6"
+                        className="bg-white border border-border rounded-2xl p-5 sm:p-6"
                       >
                         <div className="flex flex-wrap items-center gap-2 mb-2">
                           <span className="text-xs font-bold text-brand bg-brand-bg px-2 py-0.5 rounded">
@@ -104,7 +105,7 @@ export default function SubsidyPage() {
           </div>
 
           <FadeIn>
-            <div className="mt-16 bg-bg-section rounded-lg p-8 sm:p-10 text-center">
+            <div className="mt-16 bg-bg-section rounded-2xl p-8 sm:p-10 text-center">
               <p className="text-text-muted text-sm mb-2">
                 ※ 助成金の内容は変更される場合があります。最新情報は各窓口にご確認ください。
               </p>
@@ -113,7 +114,7 @@ export default function SubsidyPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded transition-colors"
+                className="inline-flex items-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full transition-colors"
               >
                 助成金について相談する
                 <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>

@@ -17,6 +17,7 @@ export default async function CasesPage() {
     <>
       <PageHeader
         title="支援事例紹介"
+        titleEn="Case Study"
         description="人材確保に成功した区内企業のリアルな取り組みと、その成果をご紹介します。"
         illustration={{ src: "/images/illust/contract-signing.png", alt: "契約を交わすビジネスパーソンのイラスト" }}
       />
@@ -29,7 +30,7 @@ export default async function CasesPage() {
                 <FadeIn key={caseItem.id} delay={i * 100}>
                   <Link
                     href={`/cases/${caseItem.id}`}
-                    className="group block bg-white border border-border rounded-lg hover:border-brand/30 overflow-hidden transition-colors"
+                    className="group block bg-white border border-border rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all"
                   >
                     {caseItem.image && (
                       <div className="relative aspect-[16/9] overflow-hidden bg-bg-section">

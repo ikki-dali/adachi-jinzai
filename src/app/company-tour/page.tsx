@@ -18,6 +18,7 @@ export default async function CompanyTourPage() {
     <>
       <PageHeader
         title="高校生企業見学"
+        titleEn="Company Tour"
         description="区内高校生と地元企業をつなぐ企業見学プログラム。未来の人材との出会いの場を創ります。"
         illustration={{ src: "/images/illust/teacher-student.png", alt: "教師と学生が学ぶイラスト" }}
       />
@@ -27,7 +28,7 @@ export default async function CompanyTourPage() {
           {/* プログラム概要 */}
           <FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-              <div className="bg-brand-bg border border-brand/10 rounded-lg p-6">
+              <div className="bg-brand-bg border border-brand/10 rounded-2xl p-6">
                 <h3 className="font-bold text-text mb-2 flex items-center gap-2">
                   <svg className="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                   企業の方へ
@@ -36,7 +37,7 @@ export default async function CompanyTourPage() {
                   見学の受入れにご興味のある企業様は、お気軽にお問い合わせください。受入れ準備のサポートも行います。
                 </p>
               </div>
-              <div className="bg-accent-bg border border-accent/10 rounded-lg p-6">
+              <div className="bg-accent-bg border border-accent/10 rounded-2xl p-6">
                 <h3 className="font-bold text-text mb-2 flex items-center gap-2">
                   <svg className="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
                   高校・教員の方へ
@@ -61,7 +62,7 @@ export default async function CompanyTourPage() {
                 <FadeIn key={exp.id} delay={i * 80}>
                   <Link
                     href={`/company-tour/${exp.id}`}
-                    className="group block bg-white border border-border rounded-lg hover:border-brand/30 overflow-hidden transition-colors"
+                    className="group block bg-white border border-border rounded-2xl hover:border-brand/30 overflow-hidden transition-colors"
                   >
                     {exp.image && (
                       <div className="relative aspect-[4/3] overflow-hidden bg-bg-section">
@@ -100,7 +101,7 @@ export default async function CompanyTourPage() {
             <div className="mt-12 text-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded transition-colors"
+                className="inline-flex items-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full transition-colors"
               >
                 企業見学について問い合わせる
                 <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>

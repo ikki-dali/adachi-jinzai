@@ -1,32 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #0d6efd;
-  --color-brand-dark: #0654c4;
-  --color-brand-light: #3d8bfd;
-  --color-brand-bg: #e8f0fe;
-  --color-brand-pale: #f0f5ff;
+  --color-brand: #2a7de1;
+  --color-brand-dark: #1a5fb4;
+  --color-brand-light: #5ca0f0;
+  --color-brand-bg: #eef5fc;
+  --color-brand-pale: #f5f9ff;
 
-  --color-accent: #34a853;
-  --color-accent-light: #5cb85c;
-  --color-accent-bg: #e6f4ea;
+  --color-accent: #00c2a8;
+  --color-accent-light: #33d4bc;
+  --color-accent-bg: #e6faf6;
 
-  --color-text: #333333;
-  --color-text-light: #555555;
-  --color-text-muted: #888888;
+  --color-cyan: #4dd0e1;
+  --color-cyan-light: #b2ebf2;
+  --color-cyan-bg: #e0f7fa;
+
+  --color-text: #1a1a2e;
+  --color-text-light: #4a4a5a;
+  --color-text-muted: #8a8a9a;
 
   --color-bg: #ffffff;
-  --color-bg-light: #f8fafb;
-  --color-bg-section: #f2f6fa;
+  --color-bg-light: #f7f9fc;
+  --color-bg-section: #f0f4f8;
 
-  --color-border: #e2e8f0;
-  --color-border-light: #edf2f7;
+  --color-border: #e4e8ee;
+  --color-border-light: #eef1f5;
 
-  --color-danger: #dc3545;
+  --color-danger: #e5534b;
 
   --color-white: #ffffff;
 
-  --font-sans: "Zen Maru Gothic", "Hiragino Maru Gothic Pro", "BIZ UDGothic", sans-serif;
+  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-accent: "Caveat", cursive;
 }
 
 @layer base {

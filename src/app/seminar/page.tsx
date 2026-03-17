@@ -18,6 +18,7 @@ export default async function SeminarPage() {
     <>
       <PageHeader
         title="セミナー・研修"
+        titleEn="Seminar"
         description="人材の確保、定着、育成に関するテーマでセミナーを定期開催しています。"
         illustration={{ src: "/images/illust/meeting-large.png", alt: "セミナーの様子のイラスト" }}
       />
@@ -30,11 +31,11 @@ export default async function SeminarPage() {
                 <FadeIn key={seminar.id} delay={i * 80}>
                   <Link
                     href={`/seminar/${seminar.id}`}
-                    className="group block bg-white border border-border rounded-lg hover:border-brand/30 transition-colors"
+                    className="group block bg-white border border-border rounded-2xl hover:border-brand/30 hover:shadow-lg transition-all duration-300"
                   >
                     <div className="flex flex-col sm:flex-row">
                       {seminar.thumbnail && (
-                        <div className="relative sm:w-64 shrink-0 aspect-video sm:aspect-auto sm:min-h-[160px] overflow-hidden bg-bg-section rounded-t-lg sm:rounded-t-none sm:rounded-l-lg">
+                        <div className="relative sm:w-64 shrink-0 aspect-video sm:aspect-auto sm:min-h-[160px] overflow-hidden bg-bg-section rounded-t-2xl sm:rounded-t-none sm:rounded-l-2xl">
                           <Image
                             src={seminar.thumbnail.url}
                             alt={seminar.title}
@@ -93,7 +94,7 @@ export default async function SeminarPage() {
             <div className="mt-12 text-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded transition-colors"
+                className="inline-flex items-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full transition-colors"
               >
                 セミナーについて問い合わせる
                 <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
