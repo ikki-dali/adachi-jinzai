@@ -1,13 +1,41 @@
 import Link from "next/link";
+import AdachiCityLogo from "@/components/AdachiCityLogo";
+
+const FOOTER_MENU = [
+  { href: "/", label: "ホーム" },
+  { href: "/advisory", label: "事業内容紹介" },
+  { href: "/cases", label: "支援事例紹介" },
+  { href: "/seminar", label: "セミナー" },
+] as const;
+
+const FOOTER_LINKS = [
+  { href: "/subsidy", label: "助成金情報" },
+  { href: "/company-tour", label: "企業見学" },
+  { href: "/grants", label: "関連リンク" },
+  { href: "/contact", label: "お問い合わせ" },
+  { href: "/privacy", label: "プライバシーポリシー" },
+] as const;
+
+const FOOTER_BAR_LINKS = [
+  { href: "/", label: "ホーム" },
+  { href: "/advisory", label: "事業内容" },
+  { href: "/cases", label: "支援事例" },
+  { href: "/seminar", label: "セミナー" },
+  { href: "/company-tour", label: "企業見学" },
+  { href: "/contact", label: "お問い合わせ" },
+  { href: "/privacy", label: "プライバシーポリシー" },
+] as const;
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a2e] text-white/80">
+    <footer className="relative z-20 mt-24 bg-[#1a1a2e] text-white/80">
       <div className="mx-auto max-w-5xl px-4 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* 事業情報 */}
           <div className="md:col-span-5">
-            <span className="font-accent text-2xl text-white/40">Adachi Jinzai</span>
+            <div className="inline-flex px-1 py-1">
+              <AdachiCityLogo className="h-16 w-auto" width={293} height={136} />
+            </div>
             <p className="mt-2 text-sm font-bold text-white">
               足立区 区内中小企業人材確保支援事業
             </p>
@@ -23,12 +51,7 @@ export default function Footer() {
           <div className="md:col-span-3">
             <p className="text-xs font-bold text-white/30 uppercase tracking-widest mb-4">Menu</p>
             <ul className="space-y-2.5">
-              {[
-                { href: "/", label: "ホーム" },
-                { href: "/advisory", label: "事業内容紹介" },
-                { href: "/cases", label: "支援事例紹介" },
-                { href: "/seminar", label: "セミナー" },
-              ].map((item) => (
+              {FOOTER_MENU.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -44,13 +67,7 @@ export default function Footer() {
           <div className="md:col-span-4">
             <p className="text-xs font-bold text-white/30 uppercase tracking-widest mb-4">Links</p>
             <ul className="space-y-2.5">
-              {[
-                { href: "/subsidy", label: "助成金情報" },
-                { href: "/company-tour", label: "企業見学" },
-                { href: "/grants", label: "関連リンク" },
-                { href: "/contact", label: "お問い合わせ" },
-                { href: "/privacy", label: "プライバシーポリシー" },
-              ].map((item) => (
+              {FOOTER_LINKS.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -67,6 +84,30 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t border-white/10 text-center">
           <p className="text-xs text-white/25">
             &copy; {new Date().getFullYear()} 足立区 区内中小企業人材確保支援事業
+          </p>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10 bg-[#0b1220] shadow-[0_-12px_30px_rgba(0,0,0,0.18)]">
+        <div className="mx-auto flex min-h-24 max-w-5xl flex-col gap-4 px-4 py-5 lg:px-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center">
+            <div className="inline-flex w-fit">
+              <AdachiCityLogo className="h-10 w-auto" width={293} height={136} />
+            </div>
+            <nav aria-label="フッターバー" className="flex flex-wrap gap-x-4 gap-y-2">
+              {FOOTER_BAR_LINKS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-xs font-medium text-white/80 transition-colors hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+          <p className="text-[11px] text-white/45">
+            サイトマップとポリシー情報をこちらにまとめています。
           </p>
         </div>
       </div>

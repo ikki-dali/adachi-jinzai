@@ -8,11 +8,15 @@ export default function HeroVideo() {
   const videoBRef = useRef<HTMLVideoElement>(null);
   const [activeIsA, setActiveIsA] = useState(true);
   const fadeSeconds = 1.5;
+  const playbackRate = 0.64;
 
   useEffect(() => {
     const videoA = videoARef.current;
     const videoB = videoBRef.current;
     if (!videoA || !videoB) return;
+
+    videoA.playbackRate = playbackRate;
+    videoB.playbackRate = playbackRate;
 
     let scheduledSwitch = false;
 
@@ -47,7 +51,7 @@ export default function HeroVideo() {
       videoA.removeEventListener("ended", handleEnded);
       videoB.removeEventListener("ended", handleEnded);
     };
-  }, [activeIsA]);
+  }, [activeIsA, playbackRate]);
 
   const baseClass =
     "absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out";
