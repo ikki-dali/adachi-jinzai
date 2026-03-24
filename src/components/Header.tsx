@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import AdachiCityLogo from "@/components/AdachiCityLogo";
 
 const NAV_ITEMS = [
   { href: "/advisory", label: "事業内容" },
@@ -19,23 +20,15 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border-light">
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* ロゴ */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 32 32"
-              fill="none"
-              className="shrink-0"
-            >
-              <path d="M4 16L16 4L28 16L16 28Z" fill="#4a7fb5" opacity="0.15" />
-              <path d="M8 16L16 8L24 16L16 24Z" fill="#4a7fb5" opacity="0.4" />
-              <path d="M12 16L16 12L20 16L16 20Z" fill="#4a7fb5" />
-            </svg>
-            <span className="text-sm font-bold text-text leading-tight">
-              足立区{" "}
-              <span className="hidden sm:inline">人材確保支援</span>
-              <span className="sm:hidden">人材支援</span>
+          <Link href="/" className="flex min-w-0 items-center gap-3 shrink-0">
+            <AdachiCityLogo
+              className="h-10 w-auto shrink-0 sm:h-11"
+              width={293}
+              height={136}
+              priority
+            />
+            <span className="hidden text-sm font-bold leading-tight text-text md:block">
+              足立区 区内中小企業人材確保支援事業
             </span>
           </Link>
 
