@@ -8,11 +8,32 @@ type Message = {
   content: string;
 };
 
+const SUGGESTIONS_SEPARATOR = "---SUGGESTIONS---";
+
+function parseSuggestions(content: string): {
+  body: string;
+  suggestions: string[];
+} {
+  const idx = content.indexOf(SUGGESTIONS_SEPARATOR);
+  if (idx === -1) return { body: content, suggestions: [] };
+
+  const body = content.slice(0, idx).trim();
+  const jsonPart = content.slice(idx + SUGGESTIONS_SEPARATOR.length).trim();
+  try {
+    const suggestions = JSON.parse(jsonPart) as string[];
+    if (Array.isArray(suggestions)) return { body, suggestions };
+  } catch {
+    // パース失敗時は候補なし
+  }
+  return { body, suggestions: [] };
+}
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -22,7 +43,7 @@ export default function ChatWidget() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, scrollToBottom]);
+  }, [messages, suggestions, scrollToBottom]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -30,7 +51,73 @@ export default function ChatWidget() {
     }
   }, [isOpen]);
 
-  const handleSubmit = async () => {
+  const sendMessages = useCallback(
+    async (msgs: Message[]) => {
+      setIsLoading(true);
+      setSuggestions([]);
+
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: msgs }),
+        });
+
+        if (!res.ok) throw new Error("送信に失敗しました");
+
+        const reader = res.body?.getReader();
+        if (!reader) throw new Error("ストリーム取得に失敗しました");
+
+        const decoder = new TextDecoder();
+        let assistantContent = "";
+
+        setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          assistantContent += decoder.decode(value, { stream: true });
+          // ストリーミング中はSUGGESTIONS部分を非表示にする
+          const { body } = parseSuggestions(assistantContent);
+          setMessages((prev) => {
+            const updated = [...prev];
+            updated[updated.length - 1] = {
+              role: "assistant",
+              content: body,
+            };
+            return updated;
+          });
+        }
+
+        // 完了後にsuggestionsをパースして表示
+        const { body, suggestions: newSuggestions } =
+          parseSuggestions(assistantContent);
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = {
+            role: "assistant",
+            content: body,
+          };
+          return updated;
+        });
+        setSuggestions(newSuggestions);
+      } catch {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content:
+              "申し訳ございません。エラーが発生しました。しばらくしてからもう一度お試しください。",
+          },
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [],
+  );
+
+  const handleSubmit = useCallback(async () => {
     const trimmed = input.trim();
     if (!trimmed || isLoading) return;
 
@@ -38,54 +125,20 @@ export default function ChatWidget() {
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput("");
-    setIsLoading(true);
+    await sendMessages(newMessages);
+  }, [input, isLoading, messages, sendMessages]);
 
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: newMessages }),
-      });
-
-      if (!res.ok) {
-        throw new Error("送信に失敗しました");
-      }
-
-      const reader = res.body?.getReader();
-      if (!reader) throw new Error("ストリーム取得に失敗しました");
-
-      const decoder = new TextDecoder();
-      let assistantContent = "";
-
-      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        assistantContent += decoder.decode(value, { stream: true });
-        const current = assistantContent;
-        setMessages((prev) => {
-          const updated = [...prev];
-          updated[updated.length - 1] = {
-            role: "assistant",
-            content: current,
-          };
-          return updated;
-        });
-      }
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content:
-            "申し訳ございません。エラーが発生しました。しばらくしてからもう一度お試しください。",
-        },
-      ]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const handleSuggestionClick = useCallback(
+    async (question: string) => {
+      if (isLoading) return;
+      const userMessage: Message = { role: "user", content: question };
+      const newMessages = [...messages, userMessage];
+      setMessages(newMessages);
+      setSuggestions([]);
+      await sendMessages(newMessages);
+    },
+    [isLoading, messages, sendMessages],
+  );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -118,8 +171,12 @@ export default function ChatWidget() {
                 </svg>
               </div>
               <div>
-                <p className="text-white text-sm font-bold">AIチャットサポート</p>
-                <p className="text-white/70 text-xs">お気軽にご質問ください</p>
+                <p className="text-white text-sm font-bold">
+                  AIチャットサポート
+                </p>
+                <p className="text-white/70 text-xs">
+                  お気軽にご質問ください
+                </p>
               </div>
             </div>
             <button
@@ -162,61 +219,7 @@ export default function ChatWidget() {
                   ].map((q) => (
                     <button
                       key={q}
-                      onClick={() => {
-                        setInput(q);
-                        setTimeout(() => {
-                          const fakeMsg: Message = {
-                            role: "user",
-                            content: q,
-                          };
-                          const newMsgs = [fakeMsg];
-                          setMessages(newMsgs);
-                          setInput("");
-                          setIsLoading(true);
-                          fetch("/api/chat", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ messages: newMsgs }),
-                          })
-                            .then(async (res) => {
-                              if (!res.ok) throw new Error();
-                              const reader = res.body?.getReader();
-                              if (!reader) throw new Error();
-                              const decoder = new TextDecoder();
-                              let content = "";
-                              setMessages((prev) => [
-                                ...prev,
-                                { role: "assistant", content: "" },
-                              ]);
-                              while (true) {
-                                const { done, value } = await reader.read();
-                                if (done) break;
-                                content += decoder.decode(value, {
-                                  stream: true,
-                                });
-                                const c = content;
-                                setMessages((prev) => {
-                                  const u = [...prev];
-                                  u[u.length - 1] = {
-                                    role: "assistant",
-                                    content: c,
-                                  };
-                                  return u;
-                                });
-                              }
-                            })
-                            .catch(() => {
-                              setMessages((prev) => [
-                                ...prev,
-                                {
-                                  role: "assistant",
-                                  content: "エラーが発生しました。",
-                                },
-                              ]);
-                            })
-                            .finally(() => setIsLoading(false));
-                        }, 0);
-                      }}
+                      onClick={() => handleSuggestionClick(q)}
                       className="block w-full text-left text-sm text-brand bg-brand-bg hover:bg-brand-pale px-3 py-2 rounded-lg transition-colors"
                     >
                       {q}
@@ -252,6 +255,22 @@ export default function ChatWidget() {
                 </div>
               </div>
             ))}
+
+            {/* フォローアップ質問候補 */}
+            {suggestions.length > 0 && !isLoading && (
+              <div className="space-y-2 pt-1">
+                {suggestions.map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => handleSuggestionClick(q)}
+                    className="block w-full text-left text-sm text-brand bg-brand-bg hover:bg-brand-pale px-3 py-2 rounded-lg transition-colors"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div ref={messagesEndRef} />
           </div>
 
