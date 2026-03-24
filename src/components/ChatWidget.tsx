@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Markdown from "react-markdown";
 
 type Message = {
   role: "user" | "assistant";
@@ -231,22 +232,23 @@ export default function ChatWidget() {
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                  className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                     msg.role === "user"
-                      ? "bg-brand text-white rounded-br-md"
-                      : "bg-bg-section text-text rounded-bl-md"
+                      ? "bg-brand text-white rounded-br-md whitespace-pre-wrap"
+                      : "bg-bg-section text-text rounded-bl-md chat-markdown"
                   }`}
                 >
-                  {msg.content}
-                  {msg.role === "assistant" &&
-                    msg.content === "" &&
-                    isLoading && (
-                      <span className="inline-flex gap-1">
-                        <span className="w-1.5 h-1.5 bg-text-muted rounded-full animate-bounce [animation-delay:0ms]" />
-                        <span className="w-1.5 h-1.5 bg-text-muted rounded-full animate-bounce [animation-delay:150ms]" />
-                        <span className="w-1.5 h-1.5 bg-text-muted rounded-full animate-bounce [animation-delay:300ms]" />
-                      </span>
-                    )}
+                  {msg.role === "user" ? (
+                    msg.content
+                  ) : msg.content === "" && isLoading ? (
+                    <span className="inline-flex gap-1">
+                      <span className="w-1.5 h-1.5 bg-text-muted rounded-full animate-bounce [animation-delay:0ms]" />
+                      <span className="w-1.5 h-1.5 bg-text-muted rounded-full animate-bounce [animation-delay:150ms]" />
+                      <span className="w-1.5 h-1.5 bg-text-muted rounded-full animate-bounce [animation-delay:300ms]" />
+                    </span>
+                  ) : (
+                    <Markdown>{msg.content}</Markdown>
+                  )}
                 </div>
               </div>
             ))}
