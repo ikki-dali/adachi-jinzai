@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | 足立区 中小企業人材確保支援",
   },
   description:
-    "足立区内の中小企業の人材確保を総合的に支援。コンサルティング支援、企業見学会、セミナー開催など。",
+    "足立区内の中小企業の人材確保を総合的に支援。アドバイザリー支援、企業見学会、セミナー開催など。",
   openGraph: {
     type: "website",
     locale: "ja_JP",

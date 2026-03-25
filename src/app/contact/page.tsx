@@ -96,7 +96,7 @@ export default function ContactPage() {
                     className="w-full border border-border rounded px-4 py-3 text-base text-text focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
                   >
                     <option value="">選択してください</option>
-                    <option value="consulting">コンサルティング支援について</option>
+                    <option value="consulting">アドバイザリー支援について</option>
                     <option value="subsidy">助成金について</option>
                     <option value="seminar">セミナーについて</option>
                     <option value="tour">企業見学について</option>

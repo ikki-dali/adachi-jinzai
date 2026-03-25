@@ -8,7 +8,7 @@ type ServiceIconProps = {
 const ICON_MAP: Record<string, { src: string; alt: string }> = {
   consulting: {
     src: "/images/illust/conversation-male.png",
-    alt: "コンサルタントが相談に乗るイラスト",
+    alt: "専門家が相談に乗るイラスト",
   },
   tour: {
     src: "/images/illust/handshake-female.png",

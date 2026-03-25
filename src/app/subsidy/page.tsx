@@ -297,7 +297,7 @@ export default function SubsidyPage() {
 
             <FadeIn>
               <p className="mt-6 text-sm text-brand font-medium bg-brand-bg rounded-xl p-4">
-                どの中小企業向け補助金が自社に最適か、コンサルティング支援（無料）の中でアドバイスすることも可能です。
+                どの中小企業向け補助金が自社に最適か、アドバイザリー支援（無料）の中でアドバイスすることも可能です。
               </p>
             </FadeIn>
           </section>

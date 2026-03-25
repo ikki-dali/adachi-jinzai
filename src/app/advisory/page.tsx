@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "事業内容紹介",
   description:
-    "専門コンサルタントが貴社の人材確保を伴走支援。採用戦略の策定から定着支援まで幅広くサポートします。",
+    "経験豊富な専門家が貴社の人材確保を伴走支援。採用戦略の策定から定着支援まで幅広くサポートします。",
 };
 
 const SUPPORT_ITEMS = [
@@ -28,7 +28,7 @@ const FLOW_STEPS = [
   { step: "お問い合わせ", detail: "まずはお電話またはお問い合わせフォームからご連絡ください。" },
   { step: "ヒアリング", detail: "貴社の現状と課題をじっくりとお伺いします。" },
   { step: "支援プラン策定", detail: "課題に合わせた最適な支援プランをご提案します。" },
-  { step: "コンサルタントによる伴走支援", detail: "専門コンサルタントが課題解決まで伴走します。" },
+  { step: "専門家による伴走支援", detail: "専門家が課題解決まで伴走します。" },
   { step: "成果確認・フォローアップ", detail: "取り組みの成果を確認し、継続的にフォローします。" },
 ] as const;
 
@@ -38,8 +38,8 @@ export default function AdvisoryPage() {
       <PageHeader
         title="事業内容紹介"
         titleEn="Advisory"
-        description="経験豊富なコンサルタントが、貴社の人材確保に関する課題を解決します。"
-        illustration={{ src: "/images/illust/advisor-talk.png", alt: "コンサルタントが相談に乗るイラスト" }}
+        description="経験豊富な専門家が、貴社の人材確保に関する課題を解決します。"
+        illustration={{ src: "/images/illust/advisor-talk.png", alt: "専門家が相談に乗るイラスト" }}
       />
 
       <div className="py-20 sm:py-32">
