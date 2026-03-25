@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AdachiCityLogo from "@/components/AdachiCityLogo";
+import Image from "next/image";
 
 const FOOTER_MENU = [
   { href: "/", label: "ホーム" },
@@ -34,7 +34,13 @@ export default function Footer() {
           {/* 事業情報 */}
           <div className="md:col-span-5">
             <div className="inline-flex px-1 py-1">
-              <AdachiCityLogo className="h-16 w-auto" width={293} height={136} />
+              <Image
+                src="/images/logos/adachi-city-symbol-dark.png"
+                alt="足立区"
+                width={1361}
+                height={375}
+                className="h-14 w-auto"
+              />
             </div>
             <p className="mt-2 text-sm font-bold text-white">
               足立区 区内中小企業人材確保支援事業
@@ -92,7 +98,13 @@ export default function Footer() {
         <div className="mx-auto flex min-h-24 max-w-5xl flex-col gap-4 px-4 py-5 lg:px-8 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-4 md:flex-row md:items-center">
             <div className="inline-flex w-fit">
-              <AdachiCityLogo className="h-10 w-auto" width={293} height={136} />
+              <Image
+                src="/images/logos/adachi-city-symbol-dark.png"
+                alt="足立区"
+                width={1361}
+                height={375}
+                className="h-9 w-auto"
+              />
             </div>
             <nav aria-label="フッターバー" className="flex flex-wrap gap-x-4 gap-y-2">
               {FOOTER_BAR_LINKS.map((item) => (

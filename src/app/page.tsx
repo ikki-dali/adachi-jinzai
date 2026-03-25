@@ -175,7 +175,7 @@ export default async function Home() {
                   <FadeIn key={service.href} delay={i * 100}>
                     <Link
                       href={service.href}
-                      className="group block bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
+                      className="group flex h-full flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
                     >
                       <span className="font-accent text-5xl font-bold text-brand/15 leading-none">
                         {service.num}
@@ -186,7 +186,7 @@ export default async function Home() {
                       <h3 className="mt-4 font-bold text-lg text-text group-hover:text-brand transition-colors">
                         {service.title}
                       </h3>
-                      <p className="mt-3 text-sm text-text-muted leading-relaxed">
+                      <p className="mt-3 flex-1 text-sm text-text-muted leading-relaxed">
                         {service.description}
                       </p>
                       <span className="inline-flex items-center mt-6 text-sm text-brand font-bold opacity-0 group-hover:opacity-100 transition-opacity">
