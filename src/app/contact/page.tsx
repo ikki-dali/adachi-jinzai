@@ -136,8 +136,8 @@ export default function ContactPage() {
               <div className="space-y-2 text-sm text-text-light">
                 <p>
                   <span className="font-bold">TEL：</span>
-                  <a href="tel:03-XXXX-XXXX" className="text-brand hover:underline">
-                    03-XXXX-XXXX
+                  <a href="tel:03-6806-1211" className="text-brand hover:underline">
+                    03-6806-1211
                   </a>
                 </p>
                 <p>受付時間：平日 10:00〜17:30（土日祝日・年末年始を除く）</p>
