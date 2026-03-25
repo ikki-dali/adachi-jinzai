@@ -41,8 +41,8 @@ export default function Footer() {
             </p>
             <div className="mt-4 space-y-1 text-sm text-white/40">
               <p>足立区 区内中小企業人材確保支援事業 事務局</p>
-              <p>〒120-XXXX 東京都足立区XXXX</p>
-              <p>TEL: 03-XXXX-XXXX</p>
+              <p>〒120-0034 東京都足立区千住1-4-1 東京芸術センター10階</p>
+              <p>TEL: 03-6806-1211</p>
               <p>受付時間：平日10時00分〜17時30分</p>
             </div>
           </div>
