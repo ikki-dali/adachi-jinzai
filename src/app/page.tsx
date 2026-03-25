@@ -52,14 +52,11 @@ export default async function Home() {
             — 変化を、ここから —
           </p>
 
-          <h1 className="mt-8 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
-            人手不足に悩む企業の
-            <br />
-            <span className="text-cyan">活気あふれる職場づくり</span>を
+          <h1 className="mt-8 text-[1.75rem] sm:text-4xl lg:text-5xl font-black text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
+            人手不足に悩む企業の<br /><span className="text-cyan">活気あふれる職場づくりを</span>
           </h1>
           <p className="mt-6 text-white/85 leading-relaxed max-w-md mx-auto text-[15px] drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
-            足立区の中小企業を、コンサルティング・見学会・セミナーで
-            多角的にサポート。費用は一切かかりません。
+            足立区の中小企業を、コンサルティング・見学会・セミナーで多角的にサポート。費用は一切かかりません。
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -102,10 +99,7 @@ export default async function Home() {
                   {/* 右：説明テキスト */}
                   <div className="lg:w-3/5">
                     <p className="text-sm text-text-light leading-[2.2]">
-                      足立区では区内中小企業の人材確保を総合的に支援するため、
-                      経験豊富なコンサルタントによる伴走型のサポートを提供しています。
-                      採用活動の見直しから職場環境の改善まで、企業の課題に合わせた
-                      オーダーメイドの支援で、持続的な人材確保を実現します。
+                      足立区では区内中小企業の人材確保を総合的に支援するため、経験豊富なコンサルタントによる伴走型のサポートを提供しています。採用活動の見直しから職場環境の改善まで、企業の課題に合わせたオーダーメイドの支援で、持続的な人材確保を実現します。
                     </p>
                     <Link
                       href="/advisory"
@@ -221,8 +215,7 @@ export default async function Home() {
                     <p className="text-xs font-bold text-accent tracking-widest uppercase mb-3">Case Study</p>
                     <h3 className="text-lg font-bold text-text group-hover:text-brand transition-colors">支援事例紹介</h3>
                     <p className="mt-3 text-sm text-text-muted leading-relaxed">
-                      業種や規模に合わせたコンサルティングで、
-                      人材確保に成功した企業の事例をご紹介。
+                      業種や規模に合わせたコンサルティングで、人材確保に成功した企業の事例をご紹介。
                     </p>
                     <span className="inline-flex items-center mt-5 text-sm text-brand font-bold">
                       事例を見る
@@ -236,8 +229,7 @@ export default async function Home() {
                     <p className="text-xs font-bold text-accent tracking-widest uppercase mb-3">Useful Links</p>
                     <h3 className="text-lg font-bold text-text group-hover:text-brand transition-colors">助成金・関連リンク</h3>
                     <p className="mt-3 text-sm text-text-muted leading-relaxed">
-                      足立区内の中小企業が活用できる補助金・助成金、
-                      東京都・国の関連情報をまとめています。
+                      足立区内の中小企業が活用できる補助金・助成金、東京都・国の関連情報をまとめています。
                     </p>
                     <span className="inline-flex items-center mt-5 text-sm text-brand font-bold">
                       リンク集を見る
@@ -254,12 +246,11 @@ export default async function Home() {
             <div className="mx-auto max-w-5xl px-4 lg:px-8 text-center">
               <FadeIn>
                 <span className="font-accent text-5xl sm:text-6xl text-white/15 leading-none">Contact</span>
-                <h2 className="mt-3 text-2xl sm:text-3xl font-bold">
-                  まずは気軽に、相談してみませんか？
+                <h2 className="mt-3 text-2xl sm:text-3xl font-bold text-nowrap sm:text-wrap">
+                  まずは気軽に、<br className="sm:hidden" />相談してみませんか？
                 </h2>
                 <p className="mt-4 text-white/70 max-w-md mx-auto text-sm leading-relaxed">
-                  人材確保のお悩み、助成金の活用、セミナーへの参加など、
-                  どんな小さなことでもOK。すべて無料です。
+                  人材確保のお悩み、助成金の活用、セミナーへの参加など、どんな小さなことでもOK。すべて無料です。
                 </p>
                 <Link
                   href="/contact"

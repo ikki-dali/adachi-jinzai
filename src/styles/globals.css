@@ -52,6 +52,7 @@
     background-color: var(--color-bg);
     line-height: 1.8;
     font-size: 15px;
+    word-break: auto-phrase;
   }
 
   ::selection {

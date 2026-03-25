@@ -86,13 +86,14 @@ export default function SubsidyPage() {
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
           {/* 導入文 */}
           <FadeIn>
-            <p className="text-text-muted text-sm sm:text-base leading-relaxed mb-16 max-w-3xl mx-auto text-center">
-              「従業員のための休憩室を作りたい」「夏の熱中症対策を強化したい」「多様な働き方に合わせて就業規則を見直したい」——そんな人材定着に向けた企業の取り組みを資金面からバックアップする助成金をご紹介します。
-              <br />
-              本事業では、助成金の申請や制度作りに向けた専門家（社会保険労務士や中小企業診断士など）の
-              <span className="font-bold text-brand">無料派遣サポート</span>
-              も行っています。
-            </p>
+            <div className="text-text-muted text-sm sm:text-base leading-relaxed mb-16 max-w-3xl mx-auto text-center space-y-4">
+              <p>
+                「従業員のための休憩室を作りたい」「夏の熱中症対策を強化したい」「多様な働き方に合わせて就業規則を見直したい」——そんな人材定着に向けた企業の取り組みを資金面からバックアップする助成金をご紹介します。
+              </p>
+              <p>
+                本事業では、助成金の申請や制度作りに向けた専門家（社会保険労務士や中小企業診断士など）の<span className="font-bold text-brand">無料派遣サポート</span>も行っています。
+              </p>
+            </div>
           </FadeIn>
 
           {/* 2カード：企業見学ページ風の導線 */}
@@ -244,11 +245,7 @@ export default function SubsidyPage() {
                   助成金を活用したいけれど「何から始めればいいかわからない」「自社に合った環境整備のアドバイスが欲しい」という企業様へ。
                 </p>
                 <p className="text-sm text-text-light leading-relaxed">
-                  本事業にお申し込みいただくと、申請前と事業実施後の
-                  <span className="font-bold text-brand">計2回</span>
-                  、実務経験豊富な専門家（中小企業診断士、社会保険労務士等）が
-                  <span className="font-bold text-brand">無料</span>
-                  で御社を訪問します。現状の課題洗い出しから、効果的な設備導入や就業規則作成のアドバイスまで、専門家がしっかり伴走します。
+                  本事業にお申し込みいただくと、申請前と事業実施後の<span className="font-bold text-brand">計2回</span>、実務経験豊富な専門家（中小企業診断士、社会保険労務士等）が<span className="font-bold text-brand">無料</span>で御社を訪問します。現状の課題洗い出しから、効果的な設備導入や就業規則作成のアドバイスまで、専門家がしっかり伴走します。
                 </p>
               </div>
             </FadeIn>
