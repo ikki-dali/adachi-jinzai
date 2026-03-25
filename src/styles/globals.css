@@ -30,8 +30,8 @@
 
   --color-white: #ffffff;
 
-  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
-  --font-accent: "Caveat", cursive;
+  --font-sans: var(--font-noto), "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-accent: var(--font-caveat), cursive;
 }
 
 @layer base {
