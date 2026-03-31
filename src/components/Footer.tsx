@@ -13,7 +13,7 @@ const FOOTER_LINKS = [
   { href: "/company-tour", label: "企業見学" },
   { href: "/grants", label: "関連リンク" },
   { href: "/contact", label: "お問い合わせ" },
-  { href: "/privacy", label: "プライバシーポリシー" },
+  { href: "https://www.sigma-staff.co.jp/corp/privacy.shtml", label: "プライバシーポリシー", external: true },
 ] as const;
 
 const FOOTER_BAR_LINKS = [
@@ -23,7 +23,7 @@ const FOOTER_BAR_LINKS = [
   { href: "/seminar", label: "セミナー" },
   { href: "/company-tour", label: "企業見学" },
   { href: "/contact", label: "お問い合わせ" },
-  { href: "/privacy", label: "プライバシーポリシー" },
+  { href: "https://www.sigma-staff.co.jp/corp/privacy.shtml", label: "プライバシーポリシー", external: true },
 ] as const;
 
 export default function Footer() {
@@ -75,12 +75,23 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {FOOTER_LINKS.map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-white/50 hover:text-white transition-colors"
-                  >
-                    {item.label}
-                  </Link>
+                  {"external" in item && item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-white/50 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="text-sm text-white/50 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -107,15 +118,27 @@ export default function Footer() {
               />
             </div>
             <nav aria-label="フッターバー" className="flex flex-wrap gap-x-4 gap-y-2">
-              {FOOTER_BAR_LINKS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-xs font-medium text-white/80 transition-colors hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {FOOTER_BAR_LINKS.map((item) =>
+                "external" in item && item.external ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-medium text-white/80 transition-colors hover:text-white"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-xs font-medium text-white/80 transition-colors hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </nav>
           </div>
           <p className="text-[11px] text-white/45">
