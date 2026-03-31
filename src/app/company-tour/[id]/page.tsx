@@ -8,13 +8,10 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  try {
-    const { id } = await params;
-    const exp = await getExperience(id);
-    return { title: exp.title, description: `${exp.schoolName}の企業見学体験記` };
-  } catch {
-    return { title: "体験記詳細" };
-  }
+  const { id } = await params;
+  const exp = await getExperience(id);
+  if (!exp) return { title: "体験記詳細" };
+  return { title: exp.title, description: `${exp.school_name}の企業見学体験記` };
 }
 
 export async function generateStaticParams() {
@@ -23,13 +20,9 @@ export async function generateStaticParams() {
 }
 
 export default async function ExperienceDetailPage({ params }: Props) {
-  let exp;
-  try {
-    const { id } = await params;
-    exp = await getExperience(id);
-  } catch {
-    notFound();
-  }
+  const { id } = await params;
+  const exp = await getExperience(id);
+  if (!exp) notFound();
 
   return (
     <>
@@ -42,7 +35,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
             <svg className="mr-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
             高校生企業見学に戻る
           </Link>
-          <span className="text-sm text-text-muted block mb-1">{exp.schoolName}</span>
+          <span className="text-sm text-text-muted block mb-1">{exp.school_name}</span>
           <h1 className="text-2xl sm:text-3xl font-bold text-text">
             {exp.title}
           </h1>
@@ -51,10 +44,10 @@ export default async function ExperienceDetailPage({ params }: Props) {
 
       <div className="py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
-          {exp.image && (
+          {exp.image_url && (
             <div className="aspect-video overflow-hidden rounded-lg mb-10 border border-border">
               <img
-                src={exp.image.url}
+                src={exp.image_url}
                 alt={exp.title}
                 className="w-full h-full object-cover"
               />

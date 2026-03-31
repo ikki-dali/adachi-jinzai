@@ -1,48 +1,34 @@
-/** microCMS共通型 */
-export type MicroCMSContent = {
+/** 共通型 */
+export type ContentBase = {
   id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-};
-
-export type MicroCMSImage = {
-  url: string;
-  height: number;
-  width: number;
-};
-
-export type MicroCMSListResponse<T> = {
-  contents: T[];
-  totalCount: number;
-  offset: number;
-  limit: number;
+  created_at: string;
+  updated_at: string;
+  published_at: string;
 };
 
 /** セミナー */
-export type Seminar = MicroCMSContent & {
+export type Seminar = ContentBase & {
   title: string;
   date: string;
   location: string;
   description: string;
   capacity: number;
-  applyUrl: string;
-  thumbnail?: MicroCMSImage;
+  apply_url: string | null;
+  thumbnail_url: string | null;
 };
 
 /** 成功事例 */
-export type Case = MicroCMSContent & {
-  companyName: string;
+export type Case = ContentBase & {
+  company_name: string;
   industry: string;
   challenge: string;
   approach: string;
   result: string;
-  image?: MicroCMSImage;
+  image_url: string | null;
 };
 
 /** お知らせ */
-export type News = MicroCMSContent & {
+export type News = ContentBase & {
   title: string;
   body: string;
   date: string;
@@ -50,18 +36,18 @@ export type News = MicroCMSContent & {
 };
 
 /** 企業見学体験記 */
-export type Experience = MicroCMSContent & {
+export type Experience = ContentBase & {
   title: string;
-  schoolName: string;
+  school_name: string;
   content: string;
-  image?: MicroCMSImage;
+  image_url: string | null;
 };
 
 /** 補助金・助成金情報 */
-export type Grant = MicroCMSContent & {
+export type Grant = ContentBase & {
   name: string;
   summary: string;
   target: string;
   amount: string;
-  applyUrl: string;
+  apply_url: string;
 };

@@ -32,11 +32,11 @@ export default async function CasesPage() {
                     href={`/cases/${caseItem.id}`}
                     className="group block bg-white border border-border rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all"
                   >
-                    {caseItem.image && (
+                    {caseItem.image_url && (
                       <div className="relative aspect-[16/9] overflow-hidden bg-bg-section">
                         <Image
-                          src={caseItem.image.url}
-                          alt={caseItem.companyName}
+                          src={caseItem.image_url}
+                          alt={caseItem.company_name}
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -48,7 +48,7 @@ export default async function CasesPage() {
                         {caseItem.industry}
                       </span>
                       <h3 className="mt-3 font-bold text-lg text-text group-hover:text-brand transition-colors">
-                        {caseItem.companyName}
+                        {caseItem.company_name}
                       </h3>
                       <p className="mt-2 text-sm text-text-muted leading-relaxed line-clamp-2">
                         {caseItem.challenge}

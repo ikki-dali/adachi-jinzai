@@ -8,13 +8,10 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  try {
-    const { id } = await params;
-    const seminar = await getSeminar(id);
-    return { title: seminar.title, description: seminar.description };
-  } catch {
-    return { title: "セミナー詳細" };
-  }
+  const { id } = await params;
+  const seminar = await getSeminar(id);
+  if (!seminar) return { title: "セミナー詳細" };
+  return { title: seminar.title, description: seminar.description };
 }
 
 export async function generateStaticParams() {
@@ -23,13 +20,9 @@ export async function generateStaticParams() {
 }
 
 export default async function SeminarDetailPage({ params }: Props) {
-  let seminar;
-  try {
-    const { id } = await params;
-    seminar = await getSeminar(id);
-  } catch {
-    notFound();
-  }
+  const { id } = await params;
+  const seminar = await getSeminar(id);
+  if (!seminar) notFound();
 
   return (
     <>
@@ -50,10 +43,10 @@ export default async function SeminarDetailPage({ params }: Props) {
 
       <div className="py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
-          {seminar.thumbnail && (
+          {seminar.thumbnail_url && (
             <div className="aspect-video overflow-hidden rounded-lg mb-10 border border-border">
               <img
-                src={seminar.thumbnail.url}
+                src={seminar.thumbnail_url}
                 alt={seminar.title}
                 className="w-full h-full object-cover"
               />
@@ -87,10 +80,10 @@ export default async function SeminarDetailPage({ params }: Props) {
             <p>{seminar.description}</p>
           </div>
 
-          {seminar.applyUrl && (
+          {seminar.apply_url && (
             <div className="mt-12 text-center">
               <a
-                href={seminar.applyUrl}
+                href={seminar.apply_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded transition-colors"

@@ -34,10 +34,10 @@ export default async function SeminarPage() {
                     className="group block bg-white border border-border rounded-2xl hover:border-brand/30 hover:shadow-lg transition-all duration-300"
                   >
                     <div className="flex flex-col sm:flex-row">
-                      {seminar.thumbnail && (
+                      {seminar.thumbnail_url && (
                         <div className="relative sm:w-64 shrink-0 aspect-video sm:aspect-auto sm:min-h-[160px] overflow-hidden bg-bg-section rounded-t-2xl sm:rounded-t-none sm:rounded-l-2xl">
                           <Image
-                            src={seminar.thumbnail.url}
+                            src={seminar.thumbnail_url}
                             alt={seminar.title}
                             fill
                             sizes="(max-width: 640px) 100vw, 256px"

@@ -8,13 +8,10 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  try {
-    const { id } = await params;
-    const c = await getCase(id);
-    return { title: `${c.companyName}の事例`, description: c.challenge };
-  } catch {
-    return { title: "支援事例詳細" };
-  }
+  const { id } = await params;
+  const c = await getCase(id);
+  if (!c) return { title: "支援事例詳細" };
+  return { title: `${c.company_name}の事例`, description: c.challenge };
 }
 
 export async function generateStaticParams() {
@@ -23,13 +20,9 @@ export async function generateStaticParams() {
 }
 
 export default async function CaseDetailPage({ params }: Props) {
-  let caseItem;
-  try {
-    const { id } = await params;
-    caseItem = await getCase(id);
-  } catch {
-    notFound();
-  }
+  const { id } = await params;
+  const caseItem = await getCase(id);
+  if (!caseItem) notFound();
 
   return (
     <>
@@ -46,18 +39,18 @@ export default async function CaseDetailPage({ params }: Props) {
             {caseItem.industry}
           </span>
           <h1 className="text-2xl sm:text-3xl font-bold text-text">
-            {caseItem.companyName}
+            {caseItem.company_name}
           </h1>
         </div>
       </div>
 
       <div className="py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
-          {caseItem.image && (
+          {caseItem.image_url && (
             <div className="aspect-video overflow-hidden rounded-lg mb-10 border border-border">
               <img
-                src={caseItem.image.url}
-                alt={caseItem.companyName}
+                src={caseItem.image_url}
+                alt={caseItem.company_name}
                 className="w-full h-full object-cover"
               />
             </div>
