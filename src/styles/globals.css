@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #4a7fb5;
-  --color-brand-dark: #3a6a9a;
-  --color-brand-light: #6a9fd0;
-  --color-brand-bg: #edf3f9;
-  --color-brand-pale: #f4f8fc;
+  --color-brand: #4CB5F5;
+  --color-brand-dark: #2a8fd4;
+  --color-brand-light: #7ccbf9;
+  --color-brand-bg: #e8f4fd;
+  --color-brand-pale: #f2f9fe;
 
-  --color-accent: #5ba4c9;
-  --color-accent-light: #7dbfdb;
-  --color-accent-bg: #e8f4f9;
+  --color-accent: #2D5A9E;
+  --color-accent-light: #3B6FB5;
+  --color-accent-bg: #e8eef7;
 
-  --color-cyan: #89c4dc;
-  --color-cyan-light: #b2d8ea;
-  --color-cyan-bg: #e8f4fa;
+  --color-cyan: #7ccbf9;
+  --color-cyan-light: #a8dcfb;
+  --color-cyan-bg: #e8f4fd;
 
-  --color-text: #2c3e50;
-  --color-text-light: #4a6178;
-  --color-text-muted: #8296a8;
+  --color-text: #1a2b3a;
+  --color-text-light: #374f63;
+  --color-text-muted: #5f7282;
 
   --color-bg: #ffffff;
   --color-bg-light: #f7f9fc;
   --color-bg-section: #f0f4f8;
 
-  --color-border: #dce4ec;
-  --color-border-light: #e8eef4;
+  --color-border: #B7B8B6;
+  --color-border-light: #d4d5d3;
 
   --color-danger: #d45d5d;
 
