@@ -16,7 +16,7 @@ const ADACHI_MENUS = [
     tagline: "従業員が快適に働ける環境づくりをサポートします。",
     examples: [
       "従業員用のトイレ・ロッカー・休憩室の整備",
-      "作業場の空調機器の整備",
+      "空調設備の導入",
       "手すり・段差解消などのバリアフリー工事",
     ],
     rate: "対象経費（工事・設計費など）の 1/2",
@@ -29,8 +29,8 @@ const ADACHI_MENUS = [
     tagline: "夏の過酷な現場環境を改善し、従業員の健康と安全を守ります。",
     examples: [
       "スポットクーラーの設置",
-      "作業場での空調設備導入・更新",
-      "ファン付きベストなど熱中症対策備品・消耗品の購入",
+      "作業場の空調設備導入・更新",
+      "ファン付きベストなど熱中症対策物品の購入",
     ],
     rate: "対象経費（工事費や購入費など）の 1/2",
     max: "上限40万円",
@@ -238,7 +238,7 @@ export default function SubsidyPage() {
                     />
                   </svg>
                   <h3 className="font-bold text-text text-lg">
-                    本事業限定：専門家による無料サポート
+                    区内中小企業人材定着サポート：専門家による無料サポート
                   </h3>
                 </div>
                 <p className="text-sm text-text-muted leading-relaxed mb-4">
@@ -302,34 +302,60 @@ export default function SubsidyPage() {
             </FadeIn>
           </section>
 
+          {/* チラシPDF */}
+          <FadeIn>
+            <div className="mt-16 bg-white border border-border rounded-2xl p-6 sm:p-8">
+              <h3 className="font-bold text-text text-lg mb-3">
+                案内チラシ（PDF）
+              </h3>
+              <p className="text-text-muted text-sm mb-4">
+                区内中小企業人材定着サポート助成金の案内チラシをご覧いただけます。
+              </p>
+              <a
+                href="/docs/teichaku-support-flyer.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-brand font-bold hover:underline"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                チラシを見る（PDF）
+              </a>
+            </div>
+          </FadeIn>
+
           {/* CTA */}
           <FadeIn>
-            <div className="mt-16 bg-bg-section rounded-2xl p-8 sm:p-10 text-center">
+            <div className="mt-8 bg-bg-section rounded-2xl p-8 sm:p-10 text-center">
               <h3 className="font-bold text-text text-lg mb-2">
                 助成金の活用に関するご相談・お問い合わせ
               </h3>
               <p className="text-text-muted text-sm mb-6 max-w-lg mx-auto">
                 「うちの会社はこの助成金の対象になる？」「専門家に一度相談してみたい」など、まずはお気軽にお問い合わせください。
               </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full transition-colors"
-              >
-                無料相談に申し込む
-                <svg
-                  className="ml-2 w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="https://www.city.adachi.tokyo.jp/chusho/jinzaiteicyakusapoto.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-brand hover:bg-brand/90 text-white font-bold py-3.5 px-8 rounded-full transition-colors"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
+                  足立区の助成金ページを見る
+                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full transition-colors"
+                >
+                  無料相談に申し込む
+                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </FadeIn>
         </div>
