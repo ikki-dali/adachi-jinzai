@@ -47,9 +47,9 @@ export default async function GrantsPage() {
                         </span>
                       </div>
                     </div>
-                    {grant.applyUrl && (
+                    {grant.apply_url && (
                       <a
-                        href={grant.applyUrl}
+                        href={grant.apply_url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center mt-3 text-sm text-brand hover:underline font-bold"

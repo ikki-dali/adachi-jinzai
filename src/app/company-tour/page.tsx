@@ -64,10 +64,10 @@ export default async function CompanyTourPage() {
                     href={`/company-tour/${exp.id}`}
                     className="group block bg-white border border-border rounded-2xl hover:border-brand/30 overflow-hidden transition-colors"
                   >
-                    {exp.image && (
+                    {exp.image_url && (
                       <div className="relative aspect-[4/3] overflow-hidden bg-bg-section">
                         <Image
-                          src={exp.image.url}
+                          src={exp.image_url}
                           alt={exp.title}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -77,7 +77,7 @@ export default async function CompanyTourPage() {
                     )}
                     <div className="p-4">
                       <span className="text-xs text-text-muted">
-                        {exp.schoolName}
+                        {exp.school_name}
                       </span>
                       <h3 className="mt-1 font-bold text-sm text-text group-hover:text-brand transition-colors">
                         {exp.title}
