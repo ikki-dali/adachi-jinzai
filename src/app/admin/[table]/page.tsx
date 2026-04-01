@@ -78,6 +78,26 @@ const TABLE_CONFIGS: Record<string, TableConfig> = {
       { key: "apply_url", label: "申込URL", type: "url", required: true },
     ],
   },
+  inquiries: {
+    label: "お問い合わせ",
+    titleField: "company",
+    fields: [
+      { key: "company", label: "企業名", type: "text", required: true, showInList: true },
+      { key: "name", label: "担当者名", type: "text", required: true, showInList: true },
+      { key: "email", label: "メール", type: "text", required: true, showInList: true },
+      { key: "phone", label: "電話番号", type: "text" },
+      { key: "address", label: "所在地", type: "text" },
+      { key: "industry", label: "業種", type: "text", showInList: true },
+      { key: "employee_count", label: "従業員数", type: "text" },
+      { key: "category", label: "種別", type: "text" },
+      { key: "message", label: "内容", type: "textarea" },
+      { key: "challenge_other", label: "その他の課題", type: "textarea" },
+      { key: "preferred_date_1", label: "希望日時（第1）", type: "text" },
+      { key: "preferred_date_2", label: "希望日時（第2）", type: "text" },
+      { key: "preferred_date_3", label: "希望日時（第3）", type: "text" },
+      { key: "status", label: "ステータス", type: "text", showInList: true },
+    ],
+  },
 };
 
 // --- 型定義 ---

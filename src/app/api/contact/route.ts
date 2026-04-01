@@ -8,10 +8,10 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    const { company, name, email, phone, category, message } = body;
+    const { company, name, email, phone } = body;
 
-    // バリデーション
-    if (!company || !name || !email || !category || !message) {
+    // 最低限のバリデーション
+    if (!company || !name || !email) {
       return NextResponse.json(
         { error: "必須項目を入力してください" },
         { status: 400 }
@@ -26,8 +26,19 @@ export async function POST(request: NextRequest) {
       name,
       email,
       phone: phone || null,
-      category,
-      message,
+      address: body.address || null,
+      representative_name: body.representative_name || null,
+      industry: body.industry || null,
+      employee_count: body.employee_count || null,
+      category: body.category || null,
+      message: body.message || null,
+      consultation_purposes: body.consultation_purposes || [],
+      challenges: body.challenges || [],
+      challenge_other: body.challenge_other || null,
+      preferred_date_1: body.preferred_date_1 || null,
+      preferred_date_2: body.preferred_date_2 || null,
+      preferred_date_3: body.preferred_date_3 || null,
+      privacy_agreed: body.privacy_agreed || false,
     });
 
     if (error) {
