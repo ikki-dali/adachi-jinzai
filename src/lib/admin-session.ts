@@ -1,26 +1,28 @@
 /**
  * 管理画面セッション管理
- * サーバープロセス内でセッショントークンを共有する
+ * ADMIN_PASSWORDからSHA-256ハッシュでトークンを生成（サーバーレス環境対応）
  */
 
-const SESSION_COOKIE = "admin_session";
+import { createHash } from "crypto";
 
-// サーバー起動ごとにランダム生成されるセッショントークン
-let sessionToken = crypto.randomUUID();
+const SESSION_COOKIE = "admin_session";
+const TOKEN_SALT = "adachi-jinzai-admin-v1";
+
+function deriveToken(): string {
+  const password = process.env.ADMIN_PASSWORD ?? "";
+  return createHash("sha256")
+    .update(`${TOKEN_SALT}:${password}`)
+    .digest("hex");
+}
 
 export function getSessionCookieName(): string {
   return SESSION_COOKIE;
 }
 
 export function getSessionToken(): string {
-  return sessionToken;
-}
-
-export function regenerateSessionToken(): string {
-  sessionToken = crypto.randomUUID();
-  return sessionToken;
+  return deriveToken();
 }
 
 export function validateSessionToken(token: string): boolean {
-  return token === sessionToken;
+  return token === deriveToken();
 }
