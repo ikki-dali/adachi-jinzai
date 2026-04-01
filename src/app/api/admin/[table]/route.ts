@@ -7,7 +7,7 @@ import {
 } from "@/lib/admin-session";
 
 // 許可するテーブル名
-const ALLOWED_TABLES = ["cases", "seminars", "experiences", "news", "grants"];
+const ALLOWED_TABLES = ["cases", "seminars", "experiences", "news", "grants", "inquiries"];
 
 /**
  * セッション検証（共有モジュールのトークンと照合）

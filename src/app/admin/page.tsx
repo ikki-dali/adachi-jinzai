@@ -14,6 +14,7 @@ const TABLES: TableInfo[] = [
   { name: "experiences", label: "企業見学体験記", path: "/admin/experiences" },
   { name: "news", label: "お知らせ", path: "/admin/news" },
   { name: "grants", label: "補助金・助成金", path: "/admin/grants" },
+  { name: "inquiries", label: "お問い合わせ", path: "/admin/inquiries" },
 ];
 
 export default function AdminDashboard() {
