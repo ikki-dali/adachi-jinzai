@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import FadeIn from "@/components/FadeIn";
 import { getGrants } from "@/lib/microcms";
@@ -72,20 +71,6 @@ export default async function GrantsPage() {
             </FadeIn>
           )}
 
-          <FadeIn>
-            <div className="mt-12 bg-bg-section rounded-2xl p-6 sm:p-8 text-center">
-              <p className="text-text-muted text-sm mb-4">
-                補助金の活用についてご不明な点がございましたら、お気軽にご相談ください。
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center bg-accent hover:bg-accent-light text-white font-bold py-3.5 px-8 rounded-full transition-colors"
-              >
-                補助金について相談する
-                <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-              </Link>
-            </div>
-          </FadeIn>
         </div>
       </div>
     </>
