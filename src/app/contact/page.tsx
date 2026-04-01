@@ -60,9 +60,9 @@ export default function ContactPage() {
       consultation_purposes: selectedPurposes,
       challenges: selectedChallenges,
       challenge_other: getValue("challenge_other"),
-      preferred_date_1: getValue("preferred_date_1"),
-      preferred_date_2: getValue("preferred_date_2"),
-      preferred_date_3: getValue("preferred_date_3"),
+      preferred_date_1: [getValue("preferred_date_1"), getValue("preferred_time_1")].filter(Boolean).join(" "),
+      preferred_date_2: [getValue("preferred_date_2"), getValue("preferred_time_2")].filter(Boolean).join(" "),
+      preferred_date_3: [getValue("preferred_date_3"), getValue("preferred_time_3")].filter(Boolean).join(" "),
       privacy_agreed: privacyAgreed,
     };
 
@@ -276,16 +276,37 @@ export default function ContactPage() {
                     <div className="space-y-4">
                       {[1, 2, 3].map((n) => (
                         <div key={n}>
-                          <label htmlFor={`preferred_date_${n}`} className="block text-sm font-bold text-text mb-2">
+                          <label className="block text-sm font-bold text-text mb-2">
                             第{n}希望
                           </label>
-                          <input
-                            type="text"
-                            id={`preferred_date_${n}`}
-                            name={`preferred_date_${n}`}
-                            className={inputClass}
-                            placeholder="例：4月15日（火）14:00〜"
-                          />
+                          <div className="grid grid-cols-2 gap-3">
+                            <input
+                              type="date"
+                              id={`preferred_date_${n}`}
+                              name={`preferred_date_${n}`}
+                              className={inputClass}
+                              min={new Date().toISOString().split("T")[0]}
+                            />
+                            <select
+                              id={`preferred_time_${n}`}
+                              name={`preferred_time_${n}`}
+                              className={inputClass}
+                            >
+                              <option value="">時間を選択</option>
+                              <option value="10:00">10:00〜</option>
+                              <option value="10:30">10:30〜</option>
+                              <option value="11:00">11:00〜</option>
+                              <option value="11:30">11:30〜</option>
+                              <option value="13:00">13:00〜</option>
+                              <option value="13:30">13:30〜</option>
+                              <option value="14:00">14:00〜</option>
+                              <option value="14:30">14:30〜</option>
+                              <option value="15:00">15:00〜</option>
+                              <option value="15:30">15:30〜</option>
+                              <option value="16:00">16:00〜</option>
+                              <option value="16:30">16:30〜</option>
+                            </select>
+                          </div>
                         </div>
                       ))}
                     </div>
