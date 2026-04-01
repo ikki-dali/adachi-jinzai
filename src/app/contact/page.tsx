@@ -129,7 +129,7 @@ export default function ContactPage() {
                         <label htmlFor="company" className="block text-sm font-bold text-text mb-2">
                           企業名 <span className="text-danger">*</span>
                         </label>
-                        <input type="text" id="company" name="company" required className={inputClass} />
+                        <input type="text" id="company" name="company" required className={inputClass} placeholder="例：株式会社足立製作所" />
                       </div>
                       <div>
                         <label htmlFor="address" className="block text-sm font-bold text-text mb-2">
@@ -143,13 +143,13 @@ export default function ContactPage() {
                           <label htmlFor="representative_name" className="block text-sm font-bold text-text mb-2">
                             代表者名
                           </label>
-                          <input type="text" id="representative_name" name="representative_name" className={inputClass} />
+                          <input type="text" id="representative_name" name="representative_name" className={inputClass} placeholder="例：足立 太郎" />
                         </div>
                         <div>
                           <label htmlFor="contact_name" className="block text-sm font-bold text-text mb-2">
                             ご担当者名 <span className="text-danger">*</span>
                           </label>
-                          <input type="text" id="contact_name" name="contact_name" required className={inputClass} />
+                          <input type="text" id="contact_name" name="contact_name" required className={inputClass} placeholder="例：足立 花子" />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -157,13 +157,13 @@ export default function ContactPage() {
                           <label htmlFor="phone" className="block text-sm font-bold text-text mb-2">
                             電話番号 <span className="text-danger">*</span>
                           </label>
-                          <input type="tel" id="phone" name="phone" required className={inputClass} />
+                          <input type="tel" id="phone" name="phone" required className={inputClass} placeholder="例：03-1234-5678" />
                         </div>
                         <div>
                           <label htmlFor="email" className="block text-sm font-bold text-text mb-2">
                             メールアドレス <span className="text-danger">*</span>
                           </label>
-                          <input type="email" id="email" name="email" required className={inputClass} />
+                          <input type="email" id="email" name="email" required className={inputClass} placeholder="例：tantosha@example.co.jp" />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -260,6 +260,7 @@ export default function ContactPage() {
                           id="challenge_other"
                           name="challenge_other"
                           rows={3}
+                          placeholder="例：社員の高齢化が進んでおり、若手の採用・育成の両方に課題を感じています"
                           className={`${inputClass} resize-y`}
                         />
                       </div>
