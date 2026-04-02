@@ -68,6 +68,8 @@ export default function InquiriesAdminPage() {
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [updatingStatus, setUpdatingStatus] = useState(false);
+  const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   const fetchInquiries = useCallback(async () => {
     setLoading(true);
@@ -89,6 +91,21 @@ export default function InquiriesAdminPage() {
   }, [fetchInquiries]);
 
   const selected = inquiries.find((i) => i.id === selectedId) ?? null;
+
+  async function deleteInquiry(id: string) {
+    setDeleting(true);
+    try {
+      const res = await fetch(`/api/admin/inquiries?id=${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("削除に失敗しました");
+      setInquiries((prev) => prev.filter((i) => i.id !== id));
+      if (selectedId === id) setSelectedId(null);
+      setDeleteConfirmId(null);
+    } catch (e) {
+      alert(e instanceof Error ? e.message : "削除に失敗しました");
+    } finally {
+      setDeleting(false);
+    }
+  }
 
   async function updateStatus(id: string, newStatus: string) {
     setUpdatingStatus(true);
@@ -253,8 +270,8 @@ export default function InquiriesAdminPage() {
                   </div>
                 )}
 
-                {/* メールリンク */}
-                <div className="pt-4 border-t border-gray-100">
+                {/* アクション */}
+                <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
                   <a
                     href={`mailto:${selected.email}?subject=${encodeURIComponent(`【足立区人材確保支援】${selected.company}様 ご相談について`)}`}
                     className="inline-flex items-center text-sm font-bold text-blue-600 hover:underline"
@@ -264,6 +281,31 @@ export default function InquiriesAdminPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
+                  {deleteConfirmId === selected.id ? (
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-red-600">本当に削除しますか？</span>
+                      <button
+                        onClick={() => deleteInquiry(selected.id)}
+                        disabled={deleting}
+                        className="text-xs font-bold text-white bg-red-600 hover:bg-red-700 px-3 py-1 rounded disabled:opacity-50"
+                      >
+                        {deleting ? "削除中..." : "削除する"}
+                      </button>
+                      <button
+                        onClick={() => setDeleteConfirmId(null)}
+                        className="text-xs text-gray-500 hover:underline"
+                      >
+                        キャンセル
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setDeleteConfirmId(selected.id)}
+                      className="text-xs text-red-500 hover:text-red-700 hover:underline"
+                    >
+                      削除
+                    </button>
+                  )}
                 </div>
               </div>
             ) : (
