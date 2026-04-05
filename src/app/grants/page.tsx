@@ -21,9 +21,9 @@ export default async function GrantsPage() {
         illustration={{ src: "/images/illust/fill-documents.png", alt: "書類を記入するイラスト" }}
       />
 
-      <div className="py-16 sm:py-24">
-        <div className="mx-auto max-w-4xl px-4 lg:px-8">
-          {grants.length > 0 ? (
+      {grants.length > 0 && (
+        <div className="py-16 sm:py-24">
+          <div className="mx-auto max-w-4xl px-4 lg:px-8">
             <div className="space-y-4">
               {grants.map((grant, i) => (
                 <FadeIn key={grant.id} delay={i * 80}>
@@ -61,18 +61,9 @@ export default async function GrantsPage() {
                 </FadeIn>
               ))}
             </div>
-          ) : (
-            <FadeIn>
-              <div className="text-center py-16">
-                <p className="text-xl font-bold text-text-muted">
-                  関連リンク情報は近日公開予定です
-                </p>
-              </div>
-            </FadeIn>
-          )}
-
+          </div>
         </div>
-      </div>
+      )}
 
       {/* 関連サイト */}
       <div className="py-16 sm:py-24 bg-bg-light">
