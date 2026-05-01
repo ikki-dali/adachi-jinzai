@@ -30,10 +30,18 @@ yarn-error.log*
 
 # env files
 .env
-.env*.local
+.env*
+!.env.example
 
 # vercel
 .vercel
+
+# Cloudflare / OpenNext output
+.wrangler/
+.wrangler-dryrun/
+.open-next/
+.dev.vars
+cloudflare-env.d.ts
 
 # typescript
 *.tsbuildinfo

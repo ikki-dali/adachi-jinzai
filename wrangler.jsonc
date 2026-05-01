@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "adachi-jinzai",
+  "account_id": "5e2fff02dfc9257c6ce6c8ac6bcba4cb",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-04-30",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
