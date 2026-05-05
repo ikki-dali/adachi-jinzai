@@ -11,5 +11,9 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    { "pattern": "adachi-jinzai-support.jp", "custom_domain": true },
+    { "pattern": "www.adachi-jinzai-support.jp", "custom_domain": true }
+  ]
 }
