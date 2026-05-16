@@ -79,13 +79,29 @@ export default async function SeminarPage() {
             </div>
           ) : (
             <FadeIn>
-              <div className="text-center py-16">
-                <p className="text-xl font-bold text-text-muted mb-3">
-                  現在予定されているセミナーはありません
+              <div className="bg-white border border-border rounded-2xl p-8 sm:p-12 text-center">
+                <div className="inline-flex items-center gap-2 bg-brand-bg text-brand text-xs font-bold px-3 py-1.5 rounded-full mb-5">
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Coming Soon
+                </div>
+                <p className="text-xl sm:text-2xl font-bold text-text mb-3">
+                  令和8年度は<span className="text-brand">7月より毎月</span>セミナーを開催します
                 </p>
-                <p className="text-sm text-text-muted">
-                  新しいセミナーが企画され次第、こちらに掲載いたします。
+                <p className="text-sm text-text-muted mb-6">
+                  ※開催月：令和8年7月〜令和9年3月（全9回予定）
                 </p>
+                <div className="max-w-2xl mx-auto space-y-3 text-sm sm:text-base text-text-muted leading-relaxed">
+                  <p>
+                    人材の確保・定着・育成に関するノウハウやスキルを習得いただける、
+                    <br className="hidden sm:block" />
+                    区内中小企業向けの実践的なセミナーを毎月開催いたします。
+                  </p>
+                  <p>外国人材の雇用に関するセミナーも年2回以上実施予定です。</p>
+                  <p>各回の詳細（テーマ・日程・会場・申込方法）は、決まり次第こちらのページでご案内いたします。</p>
+                  <p className="font-bold text-text pt-2">皆様のご参加を心よりお待ちしております。</p>
+                </div>
               </div>
             </FadeIn>
           )}
