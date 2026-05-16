@@ -90,7 +90,7 @@ export default async function SeminarPage() {
                   令和8年度は<span className="text-brand">7月より毎月</span>セミナーを開催します
                 </p>
                 <p className="text-sm text-text-muted mb-6">
-                  ※開催月：令和8年7月〜令和9年3月（全9回予定）
+                  ※開催月：令和8年7月〜令和9年3月
                 </p>
                 <div className="max-w-2xl mx-auto space-y-3 text-sm sm:text-base text-text-muted leading-relaxed">
                   <p>
